@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AR Food Menu</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/MindAR-js/aframe/dist/aframe-mindar.js"></script>
+    <style>
+      #arMenu {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 15px;
+        font-family: Arial, sans-serif;
+        z-index: 2;
+        width: 200px;
+      }
+
+      #arMenu h3 {
+        margin-top: 0;
+        color: #333;
+      }
+
+      #arMenu ul {
+        padding-left: 20px;
+      }
+
+      #orderList {
+        margin-top: 10px;
+      }
+
+      #orderList button {
+        background-color: #ff9800;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- AR Container -->
+    <a-scene mindar="imageTargetSrc: ./targets.mind;" color-space="sRGB" embedded
+             vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      
+      <!-- Camera Setup -->
+      <a-entity camera></a-entity>
+
+      <!-- Image Target -->
+      <a-entity mindar-image-target="targetIndex: 0">
+        
+        <!-- 3D Burger Model (Placeholder) -->
+        <a-box position="0 0.2 0" depth="0.2" height="0.2" width="0.2" color="#f5c542"></a-box>
+        <a-sphere position="0 0.5 0" radius="0.15" color="#f79c42"></a-sphere>
+
+        <!-- Price Tag -->
+        <a-text value="Rp. 25,000" color="red" position="0 -0.5 0" align="center"></a-text>
+      </a-entity>
+    </a-scene>
+
+    <!-- Menu UI -->
+    <div id="arMenu">
+      <h3>Big Burger</h3>
+      <p>Price: Rp. 25,000</p>
+      <h4>Ingredients:</h4>
+      <ul>
+        <li>Bun</li>
+        <li>Beef Patty</li>
+        <li>Cheese</li>
+        <li>Lettuce</li>
+        <li>Tomato</li>
+        <li>Onion</li>
+      </ul>
+      <div id="orderList">
+        <button onclick="addToOrder()">Add To Order</button>
+      </div>
+    </div>
+
+    <!-- Script -->
+    <script>
+      function addToOrder() {
+        alert("Big Burger added to your order!");
+      }
+    </script>
+  </body>
+</html>
